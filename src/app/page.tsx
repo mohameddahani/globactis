@@ -1,8 +1,8 @@
 import CardNav from "@/components/CardNav";
-import Background from "@/components/Background";
 import logo from "../../public/logo.png";
+import Hero from "@/components/Hero";
 
-const Home = () => {
+export default function Home() {
   const items = [
     {
       label: "About",
@@ -63,27 +63,24 @@ const Home = () => {
   ];
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden">
-      <Background
-        beamWidth={2}
-        beamHeight={150}
-        beamNumber={10}
-        lightColor="#FEB50F"
-        speed={2}
-        noiseIntensity={1.5}
-        scale={0.2}
-        rotation={40}
-      />
-      <div className="absolute top-0 left-0 w-full z-10">
+    <div>
+      {/* Navbar above all content */}
+      <header className="relative z-50">
         <CardNav
           logo={logo}
           logoAlt="Globactis Logo"
           items={items}
           ease="power3.out"
         />
-      </div>
+      </header>
+
+      {/* Page content above background but below navbar */}
+      <main className="relative top-50 z-10">
+        <Hero />
+        {/* other sections */}
+      </main>
+
+      <footer className="relative z-10">{/* footer */}</footer>
     </div>
   );
-};
-
-export default Home;
+}
