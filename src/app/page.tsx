@@ -1,5 +1,5 @@
-import NavBar from "@/components/Navbar";
-import Background from "@/components/background";
+import NavBar from "../components/CardNav";
+import Background from "../components/Background";
 
 const Home = () => {
   return (
