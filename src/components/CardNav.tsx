@@ -180,13 +180,13 @@ const CardNav: React.FC<CardNavProps> = ({
         ref={navRef}
         className={`card-nav ${
           isExpanded ? "open" : ""
-        } block h-[60px] p-0 rounded-xl shadow-md relative overflow-hidden will-change-[height]`}
+        } block h-[60px] p-0 rounded-2xl border-[1.5px] border-white/30 relative overflow-hidden will-change-[height]`}
       >
-        <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-2 pl-[1.1rem] z-[2] bg-light dark:bg-dark">
+        <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-2 pl-[1.1rem] z-[2] backdrop-blur-md">
           <div
             className={`hamburger-menu ${
               isHamburgerOpen ? "open" : ""
-            } group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] order-2 md:order-none dark:text-light`}
+            } group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] order-2 md:order-none text-light`}
             onClick={toggleMenu}
             role="button"
             aria-label={isExpanded ? "Close menu" : "Open menu"}
@@ -231,7 +231,7 @@ const CardNav: React.FC<CardNavProps> = ({
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6 text-light bg-dark p-1 border-[1.5px] w-[35px] h-[35px] rounded-full"
+                className="size-6 text-amber-300 p-1 border-[1.5px] w-[35px] h-[35px] rounded-full"
               >
                 <path
                   strokeLinecap="round"
@@ -263,7 +263,7 @@ const CardNav: React.FC<CardNavProps> = ({
             isExpanded
               ? "visible pointer-events-auto"
               : "invisible pointer-events-none"
-          } md:flex-row md:items-end md:gap-[12px] dark:bg-dark`}
+          } md:flex-row md:items-end md:gap-[12px] backdrop-blur-md`}
           aria-hidden={!isExpanded}
         >
           {(items || []).slice(0, 3).map((item, idx) => (

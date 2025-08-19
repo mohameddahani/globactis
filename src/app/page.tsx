@@ -3,18 +3,20 @@ import Background from "@/components/background";
 
 const Home = () => {
   return (
-    <div>
+    <div className="relative w-screen h-screen overflow-hidden">
       <Background
         beamWidth={2}
-        beamHeight={15}
-        beamNumber={12}
-        lightColor="#ffffff"
+        beamHeight={150}
+        beamNumber={10}
+        lightColor="#FEB50F"
         speed={2}
-        noiseIntensity={1.75}
+        noiseIntensity={1.5}
         scale={0.2}
-        rotation={0}
+        rotation={40}
       />
-      <NavBar />
+      <div className="absolute top-0 left-0 w-full z-10">
+        <NavBar />
+      </div>
     </div>
   );
 };
