@@ -1,6 +1,6 @@
-import CardNav from "../components/CardNav";
+import CardNav from "@/components/CardNav";
+import Background from "@/components/Background";
 import logo from "../../public/logo.png";
-import Background from "../components/Background";
 
 const Home = () => {
   const items = [
