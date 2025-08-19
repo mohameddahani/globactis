@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 "use client";
 
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import Image from "next/image";
-import Logo from "../../public/logo.png";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 type CardNavLink = {
@@ -20,17 +21,17 @@ export type CardNavItem = {
 };
 
 export interface CardNavProps {
-  logo: string;
-  logoAlt?: string;
+  logo: string | StaticImageData;
+  logoAlt: string;
   items: CardNavItem[];
   ease?: string;
 }
 
 const CardNav: React.FC<CardNavProps> = ({
-  logo = Logo,
-  logoAlt = "Logo",
+  logo,
+  logoAlt,
   items,
-  ease = "power3.out",
+  ease,
 }) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
