@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 "use client";
 
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -27,12 +27,7 @@ export interface CardNavProps {
   ease?: string;
 }
 
-const CardNav: React.FC<CardNavProps> = ({
-  logo,
-  logoAlt,
-  items,
-  ease,
-}) => {
+const CardNav: React.FC<CardNavProps> = ({ logo, logoAlt, items, ease }) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const navRef = useRef<HTMLDivElement | null>(null);
@@ -152,27 +147,6 @@ const CardNav: React.FC<CardNavProps> = ({
   const setCardRef = (i: number) => (el: HTMLDivElement | null) => {
     if (el) cardsRef.current[i] = el;
   };
-
-  // dark mode
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    // only run in browser
-    if (typeof window === "undefined") return;
-
-    // load theme once
-    const saved = localStorage.getItem("theme") === "dark";
-    setDarkMode(saved);
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    // apply theme + save
-    document.documentElement.classList.toggle("dark", darkMode);
-    localStorage.setItem("theme", darkMode ? "dark" : "light");
-  }, [darkMode]);
-
   return (
     <div
       className={`card-nav-container absolute left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] z-[99] top-[1.2em] md:top-[2em]`}
@@ -181,13 +155,13 @@ const CardNav: React.FC<CardNavProps> = ({
         ref={navRef}
         className={`card-nav ${
           isExpanded ? "open" : ""
-        } block h-[60px] p-0 rounded-2xl border-[1.5px] border-white/30 relative overflow-hidden will-change-[height]`}
+        } block h-[60px] p-0 rounded-2xl border-[1.5px] border-black/30 relative overflow-hidden will-change-[height]`}
       >
         <div className="card-nav-top absolute inset-x-0 top-0 h-[60px] flex items-center justify-between p-2 pl-[1.1rem] z-[2] backdrop-blur-md">
           <div
             className={`hamburger-menu ${
               isHamburgerOpen ? "open" : ""
-            } group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] order-2 md:order-none text-light`}
+            } group h-full flex flex-col items-center justify-center cursor-pointer gap-[6px] order-2 md:order-none text-black`}
             onClick={toggleMenu}
             role="button"
             aria-label={isExpanded ? "Close menu" : "Open menu"}
@@ -217,46 +191,9 @@ const CardNav: React.FC<CardNavProps> = ({
               </h3>
             </Link>
           </div>
-
-          <button
-            type="button"
-            className="flex justify-center items-center rounded-full md:inline-flex border-0 p-2 h-ful font-medium cursor-pointer transition-colors duration-300"
-            onClick={() => {
-              setDarkMode((prev) => !prev);
-            }}
-          >
-            {!darkMode ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6 text-amber-300 p-1 border-[1.5px] w-[35px] h-[35px] rounded-full"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
-                />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6 text-amber-300 p-1 border-[1.5px] w-[35px] h-[35px] rounded-full"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
-                />
-              </svg>
-            )}
-          </button>
+          <div>
+            <Link className="bg-transparent text-black p-2 rounded-md text-center border-1" href="/contact">Contact</Link>
+          </div>
         </div>
 
         <div

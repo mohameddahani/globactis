@@ -1,0 +1,51 @@
+.mySwiper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.custom-slide {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row.big{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row.big img {
+  /* width: 50%; */
+  height: 400px;
+  width: 600px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.row.small {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.row.small img {
+  /* flex: 1; */
+  height: 400px;
+  width: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Swiper default arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: blue; /* make arrows black */
+  transition: opacity 0.3s;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  opacity: 0.7;
+}

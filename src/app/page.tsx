@@ -64,7 +64,6 @@ export default function Home() {
 
   return (
     <div>
-      {/* Navbar above all content */}
       <header className="relative z-50">
         <CardNav
           logo={logo}
@@ -74,11 +73,7 @@ export default function Home() {
         />
       </header>
 
-      {/* Page content above background but below navbar */}
-      <main className="relative top-50 z-10">
-        <Hero />
-        {/* other sections */}
-      </main>
+      <main className="relative top-50 z-10"><Hero /></main>
 
       <footer className="relative z-10">{/* footer */}</footer>
     </div>
